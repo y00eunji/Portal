@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="kr.ac.jejunu.UserDaoTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-03-26T09:09:45" hostname="DESKTOP-3OV3DE1" time="0.742">
+  <properties/>
+  <testcase name="get()" classname="kr.ac.jejunu.UserDaoTest" time="0.742"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
