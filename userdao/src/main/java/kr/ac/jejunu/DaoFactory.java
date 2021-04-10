@@ -3,12 +3,13 @@ package kr.ac.jejunu;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 
 import javax.sql.DataSource;
 import java.sql.Driver;
 
-//의존성 없애기
+
 @Configuration
 public class DaoFactory {
 
@@ -21,9 +22,14 @@ public class DaoFactory {
     @Value("${db.url}")
     private String url;
 
-    @Bean //스프링 컨테이너가 관리하는 자바오브젝트
+    @Bean
     public UserDao userDao() throws ClassNotFoundException {
-        return new UserDao(dataSource());
+        return new UserDao(jdbcTemplate());
+    }
+
+    @Bean
+    public JdbcTemplate jdbcTemplate() throws ClassNotFoundException {
+        return new JdbcTemplate(dataSource());
     }
 
     @Bean
