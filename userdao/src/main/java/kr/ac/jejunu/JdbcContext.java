@@ -142,8 +142,8 @@ public class JdbcContext {
             PreparedStatement preparedStatement = connection.prepareStatement(
                     sql
             );
-            for(int i = 0; i < param.length; i++){
-                preparedStatement.setObject(i+1, param[i]);
+            for (int i = 0; i < param.length; i++) {
+                preparedStatement.setObject(i + 1, param[i]);
             }
             return preparedStatement;
         });
@@ -156,8 +156,8 @@ public class JdbcContext {
                     , Statement.RETURN_GENERATED_KEYS
 
             );
-            for (int i = 0; i < param.length; i++){
-                preparedStatement.setObject(i+1, param[i]);
+            for (int i = 0; i < param.length; i++) {
+                preparedStatement.setObject(i + 1, param[i]);
             }
             return preparedStatement;
 
@@ -169,8 +169,8 @@ public class JdbcContext {
             PreparedStatement preparedStatement = connection.prepareStatement(
                     sql
             );
-            for (int i = 0; i < param.length; i++){
-                preparedStatement.setObject(i+1, param[i]);
+            for (int i = 0; i < param.length; i++) {
+                preparedStatement.setObject(i + 1, param[i]);
             }
             return preparedStatement;
         });

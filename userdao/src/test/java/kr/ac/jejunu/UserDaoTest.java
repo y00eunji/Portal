@@ -2,15 +2,8 @@ package kr.ac.jejunu;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.beans.factory.config.RuntimeBeanReference;
-import org.springframework.beans.factory.support.RootBeanDefinition;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.BeanDefinitionDsl;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.context.support.StaticApplicationContext;
-import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.sql.SQLException;
 
@@ -26,8 +19,8 @@ public class UserDaoTest {
 
     @BeforeAll
     public static void setup() throws ClassNotFoundException {
-        ClassPathXmlApplicationContext applicationContext =
-                new ClassPathXmlApplicationContext("daoFactory.xml");
+//        ClassPathXmlApplicationContext applicationContext =
+//                new ClassPathXmlApplicationContext("daoFactory.xml");
 //        StaticApplicationContext applicationContext =
 //                new StaticApplicationContext();
 //        BeanDefinition dataBeanDefinition = new RootBeanDefinition(SimpleDriverDataSource.class);
@@ -59,6 +52,10 @@ public class UserDaoTest {
 //        applicationContext.registerBeanDefinition("userDao", userDaoBeanDefinition);
 //        ApplicationContext applicationContext
 //                = new AnnotationConfigApplicationContext(DaoFactory.class);
+//        ApplicationContext applicationContext
+//                = new AnnotationConfigApplicationContext("kr.ac.jejunu");
+        ApplicationContext applicationContext
+                = new AnnotationConfigApplicationContext("kr.ac.jejunu");
         userDao = applicationContext.getBean("userDao", UserDao.class);
     }
 
@@ -77,6 +74,7 @@ public class UserDaoTest {
         assertThat(user.getName(), is(name));
         assertThat(user.getPassword(), is(password));
     }
+
     @Test
     public void insert() throws SQLException, ClassNotFoundException {
         String name = "eunji3";
@@ -96,6 +94,7 @@ public class UserDaoTest {
         assertThat(insertedUser.getName(), is(user.getName()));
         assertThat(insertedUser.getPassword(), is(user.getPassword()));
     }
+
     @Test
     public void update() throws SQLException, ClassNotFoundException {
         String name = "eunji11";

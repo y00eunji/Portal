@@ -1,16 +1,27 @@
 package kr.ac.jejunu;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Component;
 
 import java.sql.*;
+
 //나는 주석이다
+@Component
 public class UserDao {
-    private final JdbcTemplate jdbcTemplate;
+//    private final JdbcTemplate jdbcTemplate;
+//
+//    public UserDao(JdbcTemplate jdbcTemplate) {
+//        this.jdbcTemplate = jdbcTemplate;
+//    }
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
     public UserDao(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
+
     }
 
     public User findById(Integer id) throws ClassNotFoundException, SQLException {
@@ -26,11 +37,11 @@ public class UserDao {
                 user.setPassword(resultSet.getString("password"));
             }
             return user;
-        },id);
+        }, id);
     }
 
     public void insert(User user) throws ClassNotFoundException, SQLException {
-        String sql ="insert into userinfo (name, password) values ( ?, ? )";
+        String sql = "insert into userinfo (name, password) values ( ?, ? )";
         Object[] param = new Object[]{user.getName(), user.getPassword()};
         KeyHolder keyHolder = new GeneratedKeyHolder();
         jdbcTemplate.update(con -> {
@@ -38,8 +49,8 @@ public class UserDao {
                     sql
                     , Statement.RETURN_GENERATED_KEYS
             );
-            for (int i = 0; i < param.length; i++){
-                preparedStatement.setObject(i+1, param[i]);
+            for (int i = 0; i < param.length; i++) {
+                preparedStatement.setObject(i + 1, param[i]);
             }
             return preparedStatement;
         }, keyHolder);
@@ -48,7 +59,7 @@ public class UserDao {
 
     public void update(User user) throws SQLException {
         String sql = "update userinfo set name = ?, password = ? where id = ?";
-        Object[] param = new Object[] {user.getName(), user.getPassword(),user.getId()};
+        Object[] param = new Object[]{user.getName(), user.getPassword(), user.getId()};
         jdbcTemplate.update(sql, param);
 
     }
