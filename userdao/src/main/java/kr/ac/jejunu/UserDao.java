@@ -1,5 +1,6 @@
 package kr.ac.jejunu;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -8,21 +9,13 @@ import org.springframework.stereotype.Component;
 
 import java.sql.*;
 
-//나는 주석이다
-@Component
-public class UserDao {
-//    private final JdbcTemplate jdbcTemplate;
-//
-//    public UserDao(JdbcTemplate jdbcTemplate) {
-//        this.jdbcTemplate = jdbcTemplate;
-//    }
 
+@Component
+//final에 대한 생성자 생성-> 의존성주입알아서됨
+public class UserDao {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    public UserDao(JdbcTemplate jdbcTemplate) {
-
-    }
 
     public User findById(Integer id) throws ClassNotFoundException, SQLException {
         String sql = "select * from userinfo where id = ?";

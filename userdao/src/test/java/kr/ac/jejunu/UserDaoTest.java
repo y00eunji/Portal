@@ -16,7 +16,6 @@ public class UserDaoTest {
 
     static UserDao userDao;
 
-
     @BeforeAll
     public static void setup() throws ClassNotFoundException {
 //        ClassPathXmlApplicationContext applicationContext =
@@ -54,8 +53,8 @@ public class UserDaoTest {
 //                = new AnnotationConfigApplicationContext(DaoFactory.class);
 //        ApplicationContext applicationContext
 //                = new AnnotationConfigApplicationContext("kr.ac.jejunu");
-        ApplicationContext applicationContext
-                = new AnnotationConfigApplicationContext("kr.ac.jejunu");
+        ApplicationContext applicationContext =
+                new AnnotationConfigApplicationContext(DaoFactory.class);
         userDao = applicationContext.getBean("userDao", UserDao.class);
     }
 
@@ -80,12 +79,16 @@ public class UserDaoTest {
         String name = "eunji3";
         String password = "12249";
 
-        User user = new User();
-        user.setName(name);
-        user.setPassword(password);
+        //builer사용
+        User user= User.builder().name(name).password(password).build();
+
+//        User user = new User();
+//        user.setName(name);
+//        user.setPassword(password);
 //        DaoFactory daoFactory = new DaoFactory();
 //        UserDao userDao = daoFactory.getUserDao();
         userDao.insert(user);
+
 
         User insertedUser = userDao.findById(user.getId());
 
