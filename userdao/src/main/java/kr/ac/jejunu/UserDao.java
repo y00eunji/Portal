@@ -16,6 +16,11 @@ public class UserDao {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    public UserDao(JdbcTemplate jdbcTemplate) {
+
+
+    }
+
 
     public User findById(Integer id) throws ClassNotFoundException, SQLException {
         String sql = "select * from userinfo where id = ?";
