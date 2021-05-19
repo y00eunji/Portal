@@ -13,13 +13,14 @@ public class UserServlet extends GenericServlet {
     @Override
     public void destroy() {
         System.out.println("*************** destroy *****************");
+//        super.destroy();
     }
 
     @Override
     public void init(ServletConfig config) throws ServletException {
-        ApplicationContext applicationContext =
-                new AnnotationConfigApplicationContext("kr.ac.jejunu");
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext("kr.ac.jejunu");
         userDao = applicationContext.getBean("userDao", UserDao.class);
+//        super.init(config);
         System.out.println("*************** init *****************");
     }
 
@@ -30,6 +31,7 @@ public class UserServlet extends GenericServlet {
         System.out.println("*************** service *****************");
         Integer id = Integer.parseInt(req.getParameter("id"));
         User user = userDao.findById(id);
+
         res.setContentType("text/html; charset=UTF-8");
         StringBuffer response = new StringBuffer();
         response.append("<html>");
@@ -39,6 +41,7 @@ public class UserServlet extends GenericServlet {
         response.append("</h1>");
         response.append("</body>");
         response.append("</html>");
+        res.setContentType("text/html;charset=UTF-8");
         res.getWriter().println(response.toString());
 
     }
