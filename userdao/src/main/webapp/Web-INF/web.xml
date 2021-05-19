@@ -23,4 +23,7 @@
     <listener>
         <listener-class>kr.ac.jejunu.UserContextListener</listener-class>
     </listener>
+    <listener>
+        <listener-class>kr.ac.jejunu.UserRequestListener</listener-class>
+    </listener>
 </web-app>
