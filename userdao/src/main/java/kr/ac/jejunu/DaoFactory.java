@@ -23,11 +23,6 @@ public class DaoFactory {
     private String url;
 
     @Bean
-    public UserDao userDao() throws ClassNotFoundException {
-        return new UserDao(jdbcTemplate());
-    }
-
-    @Bean
     public JdbcTemplate jdbcTemplate() throws ClassNotFoundException {
         return new JdbcTemplate(dataSource());
     }
@@ -36,10 +31,6 @@ public class DaoFactory {
     public DataSource dataSource() throws ClassNotFoundException {
         SimpleDriverDataSource dataSource =
                 new SimpleDriverDataSource();
-//        className = "com.mysql.cj.jdbc.Driver";
-//        password = "jejupw";
-//        username = "jeju";
-//        url = "jdbc:mysql://localhost/jeju?characterEncoding=utf-8&serverTimezone=UTC";
         dataSource.setDriverClass((Class<? extends Driver>) Class.forName(className));
         dataSource.setUsername(username);
         dataSource.setPassword(password);

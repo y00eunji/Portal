@@ -11,6 +11,6 @@ public class UserRequestListener implements ServletRequestListener {
 
     @Override
     public void requestInitialized(ServletRequestEvent sre) {
-        System.out.println("*********** destroy init *************");
+        System.out.println("*********** request init *************");
     }
 }

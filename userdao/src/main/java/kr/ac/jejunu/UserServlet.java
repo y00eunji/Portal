@@ -13,6 +13,7 @@ public class UserServlet extends GenericServlet {
     @Override
     public void destroy() {
         System.out.println("*************** destroy *****************");
+        super.destroy();
     }
 
     @Override
@@ -20,14 +21,16 @@ public class UserServlet extends GenericServlet {
         ApplicationContext applicationContext =
                 new AnnotationConfigApplicationContext("kr.ac.jejunu");
         userDao = applicationContext.getBean("userDao", UserDao.class);
+        super.init(config);
         System.out.println("*************** init *****************");
+
     }
 
     @Override
     public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
         System.out.println("*************** service *****************");
-        Integer id = Integer.parseInt(req.getParameter("id"));
-        User user = userDao.findById(id);
+//        Integer id = Integer.parseInt(req.getParameter("id"));
+        User user = userDao.findById(3);
 
         res.setContentType("text/html; charset=UTF-8");
         StringBuffer response = new StringBuffer();

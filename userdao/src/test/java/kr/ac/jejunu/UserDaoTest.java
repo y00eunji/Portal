@@ -17,51 +17,16 @@ public class UserDaoTest {
     static UserDao userDao;
 
     @BeforeAll
-    public static void setup() throws ClassNotFoundException {
-//        ClassPathXmlApplicationContext applicationContext =
-//                new ClassPathXmlApplicationContext("daoFactory.xml");
-//        StaticApplicationContext applicationContext =
-//                new StaticApplicationContext();
-//        BeanDefinition dataBeanDefinition = new RootBeanDefinition(SimpleDriverDataSource.class);
-//        dataBeanDefinition.getPropertyValues()
-//                .addPropertyValue("driverClass"
-//                        , Class.forName(System.getenv("DB_DRIVER")));
-//        dataBeanDefinition.getPropertyValues()
-//                .addPropertyValue("username"
-//                        , System.getenv("DB_USERNAME"));
-//        dataBeanDefinition.getPropertyValues()
-//                .addPropertyValue("password"
-//                        , System.getenv("DB_PASSWORD"));
-//        dataBeanDefinition.getPropertyValues()
-//                .addPropertyValue("url"
-//                        , System.getenv("DB_URL"));
-//
-//
-//
-//        applicationContext.registerBeanDefinition("dataSource", dataBeanDefinition);
-//        BeanDefinition jdbcBeanDefinition = new RootBeanDefinition(JdbcTemplate.class);
-//        jdbcBeanDefinition.getConstructorArgumentValues().addGenericArgumentValue(
-//                new RuntimeBeanReference("dataSource")
-//        );
-//        applicationContext.registerBeanDefinition("jdbcTemplate", jdbcBeanDefinition);
-//        BeanDefinition userDaoBeanDefinition = new RootBeanDefinition(UserDao.class);
-//        userDaoBeanDefinition.getConstructorArgumentValues().addGenericArgumentValue(
-//                new RuntimeBeanReference("jdbcTemplate")
-//        );
-//        applicationContext.registerBeanDefinition("userDao", userDaoBeanDefinition);
-//        ApplicationContext applicationContext
-//                = new AnnotationConfigApplicationContext(DaoFactory.class);
-//        ApplicationContext applicationContext
-//                = new AnnotationConfigApplicationContext("kr.ac.jejunu");
+    public static void setup()  {
         ApplicationContext applicationContext =
-                new AnnotationConfigApplicationContext(DaoFactory.class);
+                new AnnotationConfigApplicationContext("kr.ac.jejunu");
         userDao = applicationContext.getBean("userDao", UserDao.class);
     }
 
     @Test
     public void get() throws SQLException, ClassNotFoundException {
-        Integer id = 1;
-        String name = "eunji";
+        Integer id = 3;
+        String name = "hulk";
         String password = "1234";
 
 //        DaoFactory daoFactory = new DaoFactory();
