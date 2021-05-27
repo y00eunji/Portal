@@ -1,15 +1,20 @@
 package kr.ac.jejunu;
 
 import lombok.SneakyThrows;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.stereotype.Controller;
 
 import javax.servlet.*;
 import java.io.IOException;
 
+@Controller("/userServlet")
 public class UserServlet extends GenericServlet {
+    @Autowired
     private UserDao userDao;
+
     @Override
     public void destroy() {
         System.out.println("*************** destroy *****************");

@@ -3,10 +3,10 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xmlns:beans="http://www.springframework.org/schema/beans"
              xmlns:context="http://www.springframework.org/schema/context"
-             xsi:schemaLocation="
-             http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+             xmlns:bean="http://www.springframework.org/schema/util"
+             xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
              http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd ">
+             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
 
     <context:component-scan base-package="kr.ac.jejunu"/>
     <beans:bean name="/user" class="kr.ac.jejunu.SimpleController">
@@ -16,5 +16,13 @@
         <beans:property name="prefix" value="/WEB-INF/views/"/>
         <beans:property name="suffix" value=".jsp"/>
     </beans:bean>
+    <beans:bean class="org.springframework.web.servlet.handler.SimpleServletHandlerAdapter"></beans:bean>
+<!--    <beans:bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">-->
+<!--        <beans:property name="mappings">-->
+<!--            <beans:props>-->
+<!--                <beans:prop key="/getuser">/user</beans:prop>-->
+<!--            </beans:props>-->
+<!--        </beans:property>-->
+<!--    </beans:bean>-->
 
 </beans:beans>
