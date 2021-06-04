@@ -18,10 +18,10 @@
         </beans:property>
         <beans:property name="viewResolvers">
             <beans:bean name="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-                <beans:property name="prefix" value="/WEB-INF/views/"/>
+                <beans:property name="prefix" value="/Web-INF/views/"/>
                 <beans:property name="suffix" value=".jsp"/>
             </beans:bean>
         </beans:property>
     </beans:bean>
-    <resources mapping="/images/**" location="/WEB-INF/static/" />
+    <resources mapping="/images/**" location="/Web-INF/static/" />
 </beans:beans>
